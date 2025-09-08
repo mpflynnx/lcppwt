@@ -5,7 +5,12 @@
 - CMake: cmake version 3.31.3
 - IDE: vscode 1.103.2
 - IDE extensions: C/C++, C/C++ Include Guard,Clang-Format, CMake
-- OS Installed libs: googletest version 1.17.0
+- OS Installed libs: [GoogleTest](https://github.com/google/googletest) version 1.17.0
+
+## Installing GoogleTest version 1.17.0 using a custom slackbuild package
+- [slackbuilds.org](https://slackbuilds.org/repository/15.0/development/gtest/) has a script for building an older verison of a gtest package
+- My updated scripts are located [here](../googletest/slackbuild/gtest/)
+- Follow instructions detailed on [slackbuilds.org](https://slackbuilds.org/howto/) to build and install the gtest package
 
 ### Building Book Examples and Running Tests
 
