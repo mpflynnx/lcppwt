@@ -1,4 +1,4 @@
-## README.md
+## Modern C++ Programming with Test-Driven Development by Jeff Langr released 2013
 
 - Operating System: Slackware Linux version 15
 - Compilers: c++ g++ gcc (GCC) 11.2.0
@@ -7,7 +7,7 @@
 - IDE extensions: C/C++, C/C++ Include Guard,Clang-Format, CMake
 - OS Installed libs: googletest version 1.17.0
 
-### Building Examples and Running Tests
+### Building Book Examples and Running Tests
 
 - Note: The books example code CMakeLists.txt files have been updated to reflect my OS dependencies and best practice for using CMake in 2025.
 
