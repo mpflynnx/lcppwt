@@ -9,7 +9,7 @@
 
 ## Installing GoogleTest version 1.17.0 using a custom slackbuild package
 - [slackbuilds.org](https://slackbuilds.org/repository/15.0/development/gtest/) has a script for building an older verison of a gtest package
-- My updated scripts are located [here](../googletest/slackbuild/gtest/)
+- My updated scripts are located [here](../../unit_testing_tools/googletest/slackbuild/gtest/)
 - Follow instructions detailed on [slackbuilds.org](https://slackbuilds.org/howto/) to build and install the gtest package
 
 ### Building Book Examples and Running Tests
