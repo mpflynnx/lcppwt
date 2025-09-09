@@ -22,3 +22,4 @@ $ cmake .. --trace-source=CMakeLists.txt
 $ make
 $ ./test
 ```
+- The above code has been added to file [go.sh](../../unit_testing_tools/go.sh). Copy and use as required.

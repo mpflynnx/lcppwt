@@ -9,7 +9,7 @@ $ git clone https://github.com/cpputest/cpputest.git
 - NOTE: To use MakefileWorker you need to build from the cpputest home directory.
 
 ```bash
-$ cd cpputest
+$ cd ~/cpputest
 $ autoreconf . -i
 $ ./configure
 $ make tdd
