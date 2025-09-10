@@ -4,7 +4,7 @@
 - Compilers: c++ g++ gcc (GCC) 11.2.0
 - CMake: cmake version 3.31.3
 - IDE: vscode 1.103.2
-- IDE extensions: C/C++, C/C++ Include Guard,Clang-Format, CMake
+- IDE extensions: C/C++, C/C++ Include Guard, Clang-Format, CMake
 - OS Installed libs: [GoogleTest](https://github.com/google/googletest) version 1.17.0
 
 ## Installing GoogleTest version 1.17.0 using a custom slackbuild package
