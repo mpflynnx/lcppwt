@@ -12,4 +12,6 @@ TEST(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
   Soundex soundex;
 
   auto encoded = soundex.encode("A");
+
+  ASSERT_THAT(encoded, testing::Eq("A"));
 }
