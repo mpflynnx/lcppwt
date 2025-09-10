@@ -17,9 +17,15 @@
 - Note: The books example code CMakeLists.txt files have been updated to reflect my OS dependencies and best practice for using CMake in 2025.
 
 ```bash
+$ rm -rf build
 $ mkdir build && cd build
 $ cmake .. --trace-source=CMakeLists.txt
 $ make
 $ ./test
 ```
-- The above code has been added to file [go.sh](../../unit_testing_tools/go.sh). Copy and use as required.
+- The above code has been added to file [go.sh](../../unit_testing_tools/go.sh). Copy and use where required.
+
+### External References
+
+- [googletest | reference | ASSERT_THAT same as EXPECT_THAT](https://google.github.io/googletest/reference/assertions.html#EXPECT_THAT)
+- [learncpp.com | Using declarations and using directives](https://www.learncpp.com/cpp-tutorial/using-declarations-and-using-directives/)
