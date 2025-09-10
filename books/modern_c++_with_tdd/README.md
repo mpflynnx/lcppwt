@@ -25,7 +25,29 @@ $ ./test
 ```
 - The above code has been added to file [go.sh](../../unit_testing_tools/go.sh). Copy and use where required.
 
+### Book Chapter 1
+
+- We will use our own `main()` defined in [main.cpp](../modern_c++_with_tdd/mycode/c2/main.cpp)
+
+**main.cpp**
+```c
+#include "gmock/gmock.h"
+
+int main(int argc, char** argv) {
+   testing::InitGoogleMock(&argc, argv);
+   return RUN_ALL_TESTS();
+}
+```
+- Alternatively we could have linked with `gtest_main` (as opposed to with `gtest`)
+
+### Book Chapter 2
+
+- In this chapter we will implement and test-drive a Soundex class, that can improve search capability of an application.
+- Commit messages for [source files](../modern_c++_with_tdd/mycode/c2/) act as documentation and should be viewed chronologically.
+
 ### External References
 
+- [googletest | primer | main() |](https://google.github.io/googletest/primer.html#writing-the-main-function)
+- [wikipedia | Rules of Soundex](https://en.wikipedia.org/wiki/Soundex)
 - [googletest | reference | ASSERT_THAT same as EXPECT_THAT](https://google.github.io/googletest/reference/assertions.html#EXPECT_THAT)
 - [learncpp.com | Using declarations and using directives](https://www.learncpp.com/cpp-tutorial/using-declarations-and-using-directives/)
