@@ -27,9 +27,10 @@ $ ./test
 
 ### Building book examples and running tests with CppUTest
 
+- To install CppUTest refer to document [../../unit_testing_tools/cpputest/installation.md](../../unit_testing_tools/cpputest/installation.md)
 - I have also documented the build and testing of the books example code using [CMake and CppUTest](../modern_c++_with_tdd/cpputest/). 
 
-### Book Chapter 1
+### Book Chapter 1 using GoogleTest
 
 - We will use our own `main()` defined in [main.cpp](../modern_c++_with_tdd/mycode/c2/main.cpp)
 
