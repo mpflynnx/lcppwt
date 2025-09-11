@@ -52,6 +52,8 @@ int main(int argc, char** argv) {
 
 ### External References
 
+- [github.com | googletest](https://github.com/google/googletest)
+- [github.com | cpputest](https://github.com/cpputest/cpputest)
 - [googletest | primer | main() |](https://google.github.io/googletest/primer.html#writing-the-main-function)
 - [wikipedia | Rules of Soundex](https://en.wikipedia.org/wiki/Soundex)
 - [googletest | reference | ASSERT_THAT same as EXPECT_THAT](https://google.github.io/googletest/reference/assertions.html#EXPECT_THAT)

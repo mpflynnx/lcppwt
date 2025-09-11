@@ -88,3 +88,8 @@ add_executable(test
 # Link the executable with the CppUTest libraries.
 target_link_libraries(test PRIVATE CppUTest::CppUTest)
 ```
+
+
+### External References
+
+- [github.com | cpputest | Integration as external CMake project](https://github.com/cpputest/cpputest#integration-as-external-cmake-project)
