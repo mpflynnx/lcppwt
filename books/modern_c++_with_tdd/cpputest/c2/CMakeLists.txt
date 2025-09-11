@@ -1,24 +1,15 @@
 project(chapterFirstExample)
 cmake_minimum_required(VERSION 3.24.1)
 
-#function(print)
-    #foreach(var ${ARGN})
-        #message("${var} = ${${var}}")
-    #endforeach()
-#endfunction()
-
-#print(PROJECT_NAME)
-
 find_package(Threads REQUIRED)
 
 # Enable C++17 standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Assumes environmental variable CPPUTEST_HOME set in .bashrc
 include_directories($ENV{CPPUTEST_HOME}/include)
 link_directories($ENV{CPPUTEST_HOME}/lib)
-
-#print(include_directories $ENV{CPPUTEST_HOME}/include)
 
 set(CMAKE_CXX_FLAGS "${CMAXE_CXX_FLAGS} -Wall")
 
