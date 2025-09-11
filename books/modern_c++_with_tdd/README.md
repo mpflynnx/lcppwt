@@ -12,9 +12,9 @@
 - My updated scripts are located [here](../../unit_testing_tools/googletest/slackbuild/gtest/)
 - Follow instructions detailed on [slackbuilds.org](https://slackbuilds.org/howto/) to build and install the gtest package
 
-### Building Book Examples and Running Tests
+### Building book examples and running tests with Googletest
 
-- Note: The books example code CMakeLists.txt files have been updated to reflect my OS dependencies and best practice for using CMake in 2025.
+- Note: I have updated the books example code CMakeLists.txt files to reflect my OS dependencies and best practice for using CMake in 2025.
 
 ```bash
 $ rm -rf build
@@ -24,6 +24,10 @@ $ make
 $ ./test
 ```
 - The above code has been added to file [go.sh](../../unit_testing_tools/go.sh). Copy and use where required.
+
+### Building book examples and running tests with CppUTest
+
+- I have also documented the build and testing of the books example code using [CMake and CppUTest](../modern_c++_with_tdd/cpputest/). 
 
 ### Book Chapter 1
 
