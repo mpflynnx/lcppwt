@@ -48,6 +48,7 @@ int main(int argc, char** argv) {
 ### Book Chapter 2
 
 - In this chapter we will implement and test-drive a Soundex class, that can improve search capability of an application.
+- The rules are soundex are described in file [soundex.md](../modern_c++_with_tdd/soundex.md)
 - Commit messages for [source files](../modern_c++_with_tdd/mycode/c2/) act as documentation and should be viewed chronologically.
 
 ### External References
