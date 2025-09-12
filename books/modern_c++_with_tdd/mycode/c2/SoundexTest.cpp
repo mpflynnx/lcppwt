@@ -2,17 +2,21 @@
 #include "gmock/gmock.h"
 
 using ::testing::Eq;
+using ::testing::Test;
 
-TEST(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
-  Soundex soundex;
+class SoundexEncoding: public Test {
+  public:
+    Soundex soundex;
+};
+
+TEST_F(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
 
   auto encoded = soundex.encode("C");
 
   EXPECT_THAT(encoded, Eq("C000"));
 }
 
-TEST(SoundexEncoding, PadsWithZerosToEnsureThreeDigits) {
-  Soundex soundex;
+TEST_F(SoundexEncoding, PadsWithZerosToEnsureThreeDigits) {
 
   auto encoded = soundex.encode("I");
 
