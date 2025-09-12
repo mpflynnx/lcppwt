@@ -16,3 +16,11 @@ TEST(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
 
   EXPECT_THAT(encoded, Eq("C000"));
 }
+
+TEST(SoundexEncoding, PadsWithZerosToEnsureThreeDigits) {
+  Soundex soundex;
+
+  auto encoded = soundex.encode("I");
+
+  EXPECT_THAT(encoded, Eq("I000"));
+}
