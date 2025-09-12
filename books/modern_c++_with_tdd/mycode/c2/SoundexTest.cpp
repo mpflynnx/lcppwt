@@ -3,7 +3,7 @@
 class Soundex {
 
 public:
-  std::string encode(const std::string &word) const { return word; }
+  std::string encode(const std::string &word) const { return word + "000"; }
 };
 
 #include "gmock/gmock.h"
@@ -14,5 +14,5 @@ TEST(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
 
   auto encoded = soundex.encode("C");
 
-  EXPECT_THAT(encoded, Eq("C"));
+  EXPECT_THAT(encoded, Eq("C000"));
 }
