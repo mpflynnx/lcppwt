@@ -1,24 +1,22 @@
-#include <string>
+#include "Soundex.h"
+#include "gmock/gmock.h"
 
-class Soundex {
+using ::testing::Eq;
+using ::testing::Test;
 
-public:
-  std::string encode(const std::string &word) const { return word + "000"; }
+class SoundexEncoding: public Test {
+  public:
+    Soundex soundex;
 };
 
-#include "gmock/gmock.h"
-using ::testing::Eq;
-
-TEST(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
-  Soundex soundex;
+TEST_F(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
 
   auto encoded = soundex.encode("C");
 
   EXPECT_THAT(encoded, Eq("C000"));
 }
 
-TEST(SoundexEncoding, PadsWithZerosToEnsureThreeDigits) {
-  Soundex soundex;
+TEST_F(SoundexEncoding, PadsWithZerosToEnsureThreeDigits) {
 
   auto encoded = soundex.encode("I");
 
