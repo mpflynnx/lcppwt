@@ -4,9 +4,9 @@
 using ::testing::Eq;
 using ::testing::Test;
 
-class SoundexEncoding: public Test {
-  public:
-    Soundex soundex;
+class SoundexEncoding : public Test {
+public:
+  Soundex soundex;
 };
 
 TEST_F(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
@@ -21,4 +21,11 @@ TEST_F(SoundexEncoding, PadsWithZerosToEnsureThreeDigits) {
   auto encoded = soundex.encode("I");
 
   EXPECT_THAT(encoded, Eq("I000"));
+}
+
+TEST_F(SoundexEncoding, ReplacesConsonantsWithAppropriateDigits) {
+
+  auto encoded = soundex.encode("Ab");
+
+  ASSERT_THAT(encoded, Eq("A100"));
 }
