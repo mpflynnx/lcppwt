@@ -59,3 +59,4 @@ int main(int argc, char** argv) {
 - [wikipedia | Rules of Soundex](https://en.wikipedia.org/wiki/Soundex)
 - [googletest | reference | ASSERT_THAT same as EXPECT_THAT](https://google.github.io/googletest/reference/assertions.html#EXPECT_THAT)
 - [learncpp.com | Using declarations and using directives](https://www.learncpp.com/cpp-tutorial/using-declarations-and-using-directives/)
+- [Clang format style options](https://clang.llvm.org/docs/ClangFormatStyleOptions.html)
