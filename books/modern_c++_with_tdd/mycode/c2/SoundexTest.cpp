@@ -5,27 +5,24 @@ using ::testing::Eq;
 using ::testing::Test;
 
 class SoundexEncoding : public Test {
-public:
+ public:
   Soundex soundex;
 };
 
 TEST_F(SoundexEncoding, RetainsSoleLetterOfOneLetterWord) {
-
   auto encoded = soundex.encode("C");
 
   EXPECT_THAT(encoded, Eq("C000"));
 }
 
 TEST_F(SoundexEncoding, PadsWithZerosToEnsureThreeDigits) {
-
   auto encoded = soundex.encode("I");
 
   EXPECT_THAT(encoded, Eq("I000"));
 }
 
 TEST_F(SoundexEncoding, ReplacesConsonantsWithAppropriateDigits) {
+  auto encoded = soundex.encode("Ac");
 
-  auto encoded = soundex.encode("Ab");
-
-  ASSERT_THAT(encoded, Eq("A100"));
+  ASSERT_THAT(encoded, Eq("A200"));
 }
