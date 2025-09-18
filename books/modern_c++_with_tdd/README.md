@@ -60,3 +60,4 @@ int main(int argc, char** argv) {
 - [googletest | reference | ASSERT_THAT same as EXPECT_THAT](https://google.github.io/googletest/reference/assertions.html#EXPECT_THAT)
 - [learncpp.com | Using declarations and using directives](https://www.learncpp.com/cpp-tutorial/using-declarations-and-using-directives/)
 - [Clang format style options](https://clang.llvm.org/docs/ClangFormatStyleOptions.html)
+- [udemy.com | Beginning C++ Programming | Section20 : STL | Associative Containers - Maps](https://www.udemy.com/course/beginning-c-plus-plus-programming/learn/lecture/10563510#overview)
