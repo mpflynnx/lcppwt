@@ -22,7 +22,7 @@ TEST_F(SoundexEncoding, PadsWithZerosToEnsureThreeDigits) {
 }
 
 TEST_F(SoundexEncoding, ReplacesConsonantsWithAppropriateDigits) {
-  auto encoded = soundex.encode("Ac");
+  auto encoded = soundex.encode("At");
 
-  ASSERT_THAT(encoded, Eq("A200"));
+  ASSERT_THAT(encoded, Eq("A300"));
 }
