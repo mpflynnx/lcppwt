@@ -26,3 +26,15 @@ TEST_F(SoundexEncoding, ReplacesConsonantsWithAppropriateDigits) {
 
   ASSERT_THAT(encoded, Eq("A300"));
 }
+
+TEST_F(SoundexEncoding, IgnoresNonAlphabetical) {
+  auto encoded = soundex.encode("A#");
+
+  ASSERT_THAT(encoded, Eq("A000"));
+}
+
+TEST_F(SoundexEncoding, ReplacesMultipleConsonantsWithDigits) {
+  auto encoded = soundex.encode("Axyz");
+
+  ASSERT_THAT(encoded, Eq("A222"));
+}
