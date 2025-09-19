@@ -16,10 +16,11 @@
 
 - Note: I have updated the books example code CMakeLists.txt files to reflect my OS dependencies and best practice for using CMake in 2025.
 
+- Build an executable for use with the gdb debugger by setting `CMAKE_BUILD_TYPE` parameter to Debug
 ```bash
 $ rm -rf build
 $ mkdir build && cd build
-$ cmake .. --trace-source=CMakeLists.txt
+$ cmake -DCMAKE_BUILD_TYPE=Debug .. --trace-source=CMakeLists.txt
 $ make
 $ ./test
 ```

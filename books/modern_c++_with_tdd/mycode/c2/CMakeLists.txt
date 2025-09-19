@@ -1,5 +1,5 @@
-project(chapterFirstExample)
 cmake_minimum_required(VERSION 3.24.1)
+project(chapterFirstExample)
 
 find_package(GTest 1.17.0 REQUIRED)
 find_package(Threads REQUIRED)
