@@ -34,7 +34,7 @@ TEST_F(SoundexEncoding, IgnoresNonAlphabetical) {
 }
 
 TEST_F(SoundexEncoding, ReplacesMultipleConsonantsWithDigits) {
-  auto encoded = soundex.encode("Axyz");
+  auto encoded = soundex.encode("Acdl");
 
-  ASSERT_THAT(encoded, Eq("A222"));
+  ASSERT_THAT(encoded, Eq("A234"));
 }
