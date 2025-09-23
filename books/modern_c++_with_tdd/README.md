@@ -16,10 +16,11 @@
 
 - Note: I have updated the books example code CMakeLists.txt files to reflect my OS dependencies and best practice for using CMake in 2025.
 
+- Build an executable for use with the gdb debugger by setting `CMAKE_BUILD_TYPE` parameter to Debug
 ```bash
 $ rm -rf build
 $ mkdir build && cd build
-$ cmake .. --trace-source=CMakeLists.txt
+$ cmake -DCMAKE_BUILD_TYPE=Debug .. --trace-source=CMakeLists.txt
 $ make
 $ ./test
 ```
@@ -59,3 +60,5 @@ int main(int argc, char** argv) {
 - [wikipedia | Rules of Soundex](https://en.wikipedia.org/wiki/Soundex)
 - [googletest | reference | ASSERT_THAT same as EXPECT_THAT](https://google.github.io/googletest/reference/assertions.html#EXPECT_THAT)
 - [learncpp.com | Using declarations and using directives](https://www.learncpp.com/cpp-tutorial/using-declarations-and-using-directives/)
+- [Clang format style options](https://clang.llvm.org/docs/ClangFormatStyleOptions.html)
+- [udemy.com | Beginning C++ Programming | Section20 : STL | Associative Containers - Maps](https://www.udemy.com/course/beginning-c-plus-plus-programming/learn/lecture/10563510#overview)
