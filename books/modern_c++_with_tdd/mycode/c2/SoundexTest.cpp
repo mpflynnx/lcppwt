@@ -39,6 +39,9 @@ TEST_F(SoundexEncoding, ReplacesMultipleConsonantsWithDigits) {
   ASSERT_THAT(encoded, Eq("A234"));
 }
 
+/*
+* The return value from soundex.encode() must have length equal to 4
+*/
 TEST_F(SoundexEncoding, LimitsLengthToFourCharacters) {
    ASSERT_THAT(soundex.encode("Dcdlb").length(), Eq(4u)); 
 }
