@@ -46,13 +46,13 @@ int main(int argc, char** argv) {
 ```
 - Alternatively we could have linked with `gtest_main` (as opposed to with `gtest`)
 
-### Book Chapter 2
+### Book Chapter 2 notes
 
 - In this chapter we will implement and test-drive a Soundex class, that can improve search capability of an application.
 - The rules are soundex are described in file [soundex.md](../modern_c++_with_tdd/soundex.md)
 - Commit messages for [source files](../modern_c++_with_tdd/mycode/c2/) act as documentation and should be viewed chronologically.
 
-### GDB
+#### GDB
 
 - By default, Google Test catches exceptions, logs them as a test failure, and then continues running the next test. This behavior is useful for maximizing test coverage in a single run, but it can make it difficult to pinpoint the exact location and cause of a crash.
 - You use `--gtest_catch_exceptions=0` primarily when you're debugging an unexpected exception in your code.
@@ -65,6 +65,20 @@ $ gdb test
 (gdb) bt // view backtrace
 ```
 -  If an unhandled exception is thrown, GDB will catch it and pause the execution, allowing you to debug the issue.
+
+#### std::string maximum size
+- When calling std::string() with std::string(4, '0') a string is created "0000".
+- The maximum size of the string when using this constructor is determined by the member constant std::string::max_size() which is 4611686018427387903 on my laptop.
+- Exceeding this number will cause a exception to be thrown.
+- The number may be accidentally exceeded as shown below
+
+```c++
+  std::string word {abcde}; // length = 5
+  static const size_t MaxCodeLength{4};
+
+  auto ZerosRequired = MaxCodeLength - word.length(); // 4 -5 = overflow to 18446744073709551615
+  std::string(ZerosRequired, '0'); // exception thrown here
+```
 
 ### External References
 
