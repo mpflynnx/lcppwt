@@ -38,3 +38,7 @@ TEST_F(SoundexEncoding, ReplacesMultipleConsonantsWithDigits) {
 
   ASSERT_THAT(encoded, Eq("A234"));
 }
+
+TEST_F(SoundexEncoding, LimitsLengthToFourCharacters) {
+   ASSERT_THAT(soundex.encode("Dcdlb").length(), Eq(4u)); 
+}

@@ -52,6 +52,20 @@ int main(int argc, char** argv) {
 - The rules are soundex are described in file [soundex.md](../modern_c++_with_tdd/soundex.md)
 - Commit messages for [source files](../modern_c++_with_tdd/mycode/c2/) act as documentation and should be viewed chronologically.
 
+### GDB
+
+- By default, Google Test catches exceptions, logs them as a test failure, and then continues running the next test. This behavior is useful for maximizing test coverage in a single run, but it can make it difficult to pinpoint the exact location and cause of a crash.
+- You use `--gtest_catch_exceptions=0` primarily when you're debugging an unexpected exception in your code.
+- The flag disables Google Test's default exception handling. This allows the debugger to catch the exception first, pausing execution at the point of the throw. This lets you inspect the call stack, local variables, and program state at the moment the exception is thrown.
+- Use gdb as shown below to debug executable `test`
+```bash
+$ gdb test
+(gdb) b main // creates breakpoint at main
+(gdb) run --gtest_catch_exceptions=0
+(gdb) bt // view backtrace
+```
+-  If an unhandled exception is thrown, GDB will catch it and pause the execution, allowing you to debug the issue.
+
 ### External References
 
 - [github.com | googletest](https://github.com/google/googletest)
