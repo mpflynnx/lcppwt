@@ -40,8 +40,12 @@ TEST_F(SoundexEncoding, ReplacesMultipleConsonantsWithDigits) {
 }
 
 /*
-* The return value from soundex.encode() must have length equal to 4
-*/
+ * The return value from soundex.encode() must have length equal to 4
+ */
 TEST_F(SoundexEncoding, LimitsLengthToFourCharacters) {
-   ASSERT_THAT(soundex.encode("Dcdlb").length(), Eq(4u)); 
+  ASSERT_THAT(soundex.encode("Dcdlb").length(), Eq(4u));
+}
+
+TEST_F(SoundexEncoding, IgnoresVowelLikeLetters) {
+  ASSERT_THAT(soundex.encode("Cwbarhl"), Eq("C164"));
 }
