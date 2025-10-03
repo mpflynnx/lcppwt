@@ -49,3 +49,7 @@ TEST_F(SoundexEncoding, LimitsLengthToFourCharacters) {
 TEST_F(SoundexEncoding, IgnoresVowelLikeLetters) {
   ASSERT_THAT(soundex.encode("Cwbarhl"), Eq("C164"));
 }
+
+TEST_F(SoundexEncoding, CombinesDuplicateEncodings) {
+  ASSERT_THAT(soundex.encode("Abfcgdt"), Eq("A123"));
+}
