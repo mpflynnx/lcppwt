@@ -13,7 +13,6 @@ class Soundex {
   }
 
  private:
-
   // https://en.cppreference.com/w/cpp/string/byte/toupper.html
   // https://en.cppreference.com/w/cpp/string/basic_string/front.html
   std::string upperFront(const std::string &string) const {
@@ -25,12 +24,15 @@ class Soundex {
 
   std::string tail(const std::string &word) const { return word.substr(1); }
 
+  const std::string NotADigit{"*"};
+
   std::string encodedDigits(const std::string &word) const {
     std::string encoding;
     for (auto letter : word) {
       if (isComplete(encoding)) break;
-      if (encodedDigit(letter) != lastDigit(encoding)) {
-        encoding += encodedDigit(letter);
+      auto digit = encodedDigit(letter);
+      if (digit != NotADigit && digit != lastDigit(encoding)) {
+        encoding += digit;
       }
     }
     return encoding;
@@ -51,7 +53,7 @@ class Soundex {
       return it->second;
     }
 
-    return "";
+    return NotADigit;
   }
 
   std::string zeroPad(const std::string &word) const {
@@ -62,7 +64,7 @@ class Soundex {
   // https://en.cppreference.com/w/cpp/string/basic_string/back.html
   // https://en.cppreference.com/w/cpp/string/basic_string/empty.html
   std::string lastDigit(const std::string &encoding) const {
-    if (encoding.empty()) return "";
+    if (encoding.empty()) return NotADigit;
     return std::string(1, encoding.back());
   }
 
