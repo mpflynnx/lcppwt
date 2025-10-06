@@ -13,6 +13,9 @@ class Soundex {
   }
 
  private:
+
+  // https://en.cppreference.com/w/cpp/string/byte/toupper.html
+  // https://en.cppreference.com/w/cpp/string/basic_string/front.html
   std::string upperFront(const std::string &string) const {
     return std::string(
         1, std::toupper(static_cast<unsigned char>(string.front())));
@@ -43,7 +46,7 @@ class Soundex {
         {'j', "2"}, {'k', "2"}, {'q', "2"}, {'s', "2"}, {'x', "2"}, {'z', "2"},
         {'d', "3"}, {'t', "3"}, {'l', "4"}, {'m', "5"}, {'n', "5"}, {'r', "6"}};
 
-    auto it = encodings.find(letter);
+    auto it = encodings.find(tolower(letter));
     if (it != encodings.end()) {
       return it->second;
     }
@@ -56,9 +59,16 @@ class Soundex {
     return word + std::string(ZerosRequired, '0');
   }
 
+  // https://en.cppreference.com/w/cpp/string/basic_string/back.html
+  // https://en.cppreference.com/w/cpp/string/basic_string/empty.html
   std::string lastDigit(const std::string &encoding) const {
     if (encoding.empty()) return "";
     return std::string(1, encoding.back());
+  }
+
+  // https://en.cppreference.com/w/cpp/string/byte/tolower.html
+  char tolower(char ch) const {
+    return static_cast<char>(std::tolower(static_cast<unsigned char>(ch)));
   }
 };
 
