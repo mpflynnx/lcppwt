@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
 - The rules are soundex are described in file [soundex.md](../modern_c++_with_tdd/soundex.md)
 - Commit messages for [source files](../modern_c++_with_tdd/mycode/c2/) act as documentation and should be viewed chronologically.
 
-#### GDB
+### Debugging exceptions using GDB
 
 - By default, Google Test catches exceptions, logs them as a test failure, and then continues running the next test. This behavior is useful for maximizing test coverage in a single run, but it can make it difficult to pinpoint the exact location and cause of a crash.
 - You use `--gtest_catch_exceptions=0` primarily when you're debugging an unexpected exception in your code.
@@ -66,7 +66,7 @@ $ gdb test
 ```
 -  If an unhandled exception is thrown, GDB will catch it and pause the execution, allowing you to debug the issue.
 
-#### std::string maximum size
+#### Common exception causes when using std::string
 - When calling std::string() with std::string(4, '0') a string is created "0000".
 - The maximum size of the string when using this constructor is determined by the member constant std::string::max_size() which is 4611686018427387903 on my laptop.
 - Exceeding this number will cause a exception to be thrown.
@@ -79,6 +79,38 @@ $ gdb test
   auto ZerosRequired = MaxCodeLength - word.length(); // 4 -5 = overflow to 18446744073709551615
   std::string(ZerosRequired, '0'); // exception thrown here
 ```
+
+## Debugging Soundex Class member functions using GDB
+
+- Ensure your C++ code is compiled with debugging symbols
+```bash
+$ mkdir build && cd build
+$ cmake -DCMAKE_BUILD_TYPE=Debug .. --trace-source=CMakeLists.txt
+$ make
+```
+- Start GDB:
+```bash
+$ gdb -q test
+```
+- Set a breakpoint in the private member function (use the full scope for clarity):
+```bash
+(gdb) b Soundex::encodedDigits
+```
+- Run the program
+```bash
+(gdb) r
+```
+- Once breakpoint is hit and inside the private member function, use `watch` to break whenever member variable changes:
+```bash
+(gdb) watch encoding
+```
+- Continue execution
+```bash
+(gdb) c
+```
+- GDB will now stop execution immediately whenever the value of `encoding` changes.
+- Once the member variable goes out of scope (i.e when the function returns) the watchpoint is deleted.
+
 
 ### External References
 
