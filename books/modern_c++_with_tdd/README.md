@@ -92,19 +92,34 @@ $ make
 ```bash
 $ gdb -q test
 ```
-- Set a breakpoint in the private member function (use the full scope for clarity):
+- Set a breakpoint on the private member function (use the full scope for clarity):
 ```bash
 (gdb) b Soundex::encodedDigits
+```
+- Alternatively if you wish to set a breakpoint on all Soundex Class member functions use `rbreak` with a regular expression.
+```bash
+(gdb) rbreak ^Soundex::.*
+```
+```
+`^` Matches the start of the function name string
+
+`Soundex::` Matches the literal class name followed by C++ scope resolution operator
+
+`.*` Matches any character (.) zero or more times (*). This covers all member functions including constructors, deconstructors and overloaded functions
+
+**NOTE** If your class is defined within a namespace, you must include the namespace in the regular expression:
+
+(gdb) rbreak ^MyNamespace::MyClass::.*
 ```
 - Run the program
 ```bash
 (gdb) r
 ```
-- Once breakpoint is hit and inside the private member function, use `watch` to break whenever member variable changes:
+- Once the first breakpoint is hit and inside the private member function, use `watch` to break whenever member a variable changes:
 ```bash
 (gdb) watch encoding
 ```
-- Continue execution
+- Continue execution until next breakpoint
 ```bash
 (gdb) c
 ```
