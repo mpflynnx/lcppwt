@@ -82,6 +82,14 @@ $ gdb test
 
 ## Debugging Soundex Class member functions using GDB
 
+- If debugging a specific test, either comment out all other tests or disable them.
+- Using Google Mock, you disable a test by prepending **`DISABLED_`** to its name, as shown below.
+```c
+TEST_F(SoundexEncoding, DISABLED_IgnoresCaseWhenEncodingConsonants) {
+  ASSERT_THAT(soundex.encode("BCDL"), Eq(soundex.encode("Bcdl")));
+}
+```
+- **Best practice:** Don't commit code with disabled (or commented out) tests.
 - Ensure your C++ code is compiled with debugging symbols
 ```bash
 $ mkdir build && cd build
