@@ -47,5 +47,21 @@ TEST_F(SoundexEncoding, LimitsLengthToFourCharacters) {
 }
 
 TEST_F(SoundexEncoding, IgnoresVowelLikeLetters) {
-  ASSERT_THAT(soundex.encode("Cwbarhl"), Eq("C164"));
+  ASSERT_THAT(soundex.encode("CwbArHl"), Eq("C164"));
+}
+
+TEST_F(SoundexEncoding, CombinesDuplicateEncodings) {
+  ASSERT_THAT(soundex.encode("Abfcgdt"), Eq("A123"));
+}
+
+TEST_F(SoundexEncoding, UppercasesFirstLetter) {
+  ASSERT_THAT(soundex.encode("abcd"), Eq("A123"));
+}
+
+TEST_F(SoundexEncoding, IgnoresCaseWhenEncodingConsonants) {
+  ASSERT_THAT(soundex.encode("BCDL"), Eq(soundex.encode("Bcdl")));
+}
+
+TEST_F(SoundexEncoding, CombinesDuplicateCodesWhen2ndLetterDuplicates1st) {
+  ASSERT_THAT(soundex.encode("Bbcd"), Eq("B230"));
 }

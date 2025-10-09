@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
 - The rules are soundex are described in file [soundex.md](../modern_c++_with_tdd/soundex.md)
 - Commit messages for [source files](../modern_c++_with_tdd/mycode/c2/) act as documentation and should be viewed chronologically.
 
-#### GDB
+### Debugging exceptions using GDB
 
 - By default, Google Test catches exceptions, logs them as a test failure, and then continues running the next test. This behavior is useful for maximizing test coverage in a single run, but it can make it difficult to pinpoint the exact location and cause of a crash.
 - You use `--gtest_catch_exceptions=0` primarily when you're debugging an unexpected exception in your code.
@@ -66,7 +66,7 @@ $ gdb test
 ```
 -  If an unhandled exception is thrown, GDB will catch it and pause the execution, allowing you to debug the issue.
 
-#### std::string maximum size
+#### Common exception causes when using std::string
 - When calling std::string() with std::string(4, '0') a string is created "0000".
 - The maximum size of the string when using this constructor is determined by the member constant std::string::max_size() which is 4611686018427387903 on my laptop.
 - Exceeding this number will cause a exception to be thrown.
@@ -79,6 +79,61 @@ $ gdb test
   auto ZerosRequired = MaxCodeLength - word.length(); // 4 -5 = overflow to 18446744073709551615
   std::string(ZerosRequired, '0'); // exception thrown here
 ```
+
+## Debugging Soundex Class member functions using GDB
+
+- If debugging a specific test, either comment out all other tests or disable them.
+- Using Google Mock, you disable a test by prepending **`DISABLED_`** to its name, as shown below.
+```c
+TEST_F(SoundexEncoding, DISABLED_IgnoresCaseWhenEncodingConsonants) {
+  ASSERT_THAT(soundex.encode("BCDL"), Eq(soundex.encode("Bcdl")));
+}
+```
+- **Best practice:** Don't commit code with disabled (or commented out) tests.
+- Ensure your C++ code is compiled with debugging symbols
+```bash
+$ mkdir build && cd build
+$ cmake -DCMAKE_BUILD_TYPE=Debug .. --trace-source=CMakeLists.txt
+$ make
+```
+- Start GDB:
+```bash
+$ gdb -q test
+```
+- Set a breakpoint on the private member function (use the full scope for clarity):
+```bash
+(gdb) b Soundex::encodedDigits
+```
+- Alternatively if you wish to set a breakpoint on all Soundex Class member functions use `rbreak` with a regular expression.
+```bash
+(gdb) rbreak ^Soundex::.*
+```
+```
+`^` Matches the start of the function name string
+
+`Soundex::` Matches the literal class name followed by C++ scope resolution operator
+
+`.*` Matches any character (.) zero or more times (*). This covers all member functions including constructors, deconstructors and overloaded functions
+
+**NOTE** If your class is defined within a namespace, you must include the namespace in the regular expression:
+
+(gdb) rbreak ^MyNamespace::MyClass::.*
+```
+- Run the program
+```bash
+(gdb) r
+```
+- Once the first breakpoint is hit and inside the private member function, use `watch` to break whenever member a variable changes:
+```bash
+(gdb) watch encoding
+```
+- Continue execution until next breakpoint
+```bash
+(gdb) c
+```
+- GDB will now stop execution immediately whenever the value of `encoding` changes.
+- Once the member variable goes out of scope (i.e when the function returns) the watchpoint is deleted.
+
 
 ### External References
 
