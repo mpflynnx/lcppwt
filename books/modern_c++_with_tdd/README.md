@@ -44,7 +44,16 @@ int main(int argc, char** argv) {
    return RUN_ALL_TESTS();
 }
 ```
-- Alternatively we could have linked with `gtest_main` (as opposed to with `gtest`)
+- Link to `gtest` in the CMakeLists.txt
+
+```CMakeLists.txt
+target_link_libraries(test PRIVATE Threads::Threads GTest::gtest GTest::gmock)
+```
+- Alternatively we could have linked with `gtest_main` (as opposed to with `gtest`) in the CMakeLists.txt. Therefore the `main.cpp` file would not be needed.
+
+```CMakeLists.txt
+target_link_libraries(test PRIVATE Threads::Threads GTest::gtest_main GTest::gmock)
+```
 
 ### Book Chapter 2 notes
 
