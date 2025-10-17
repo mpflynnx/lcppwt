@@ -38,18 +38,26 @@ class Soundex {
   }
 
   void encodeTail(std::string &encoding, const std::string &word) const {
-    for (auto letter : tail(word)) {
+    for (auto i = 1u; i < word.length(); i++) {
       if (!isComplete(encoding)) {
-        encodeLetter(encoding, letter);
+        encodeLetter(encoding, word[i], word[i - 1]);
       }
     }
   }
 
-  void encodeLetter(std::string &encoding, char letter) const {
-    auto digit = encodedDigit(letter);
-    if (digit != NotADigit && digit != lastDigit(encoding)) {
+  void encodeLetter(std::string &encoding, char currentLetter,
+                    char previousLetter) const {
+    auto digit = encodedDigit(currentLetter);
+    if (digit != NotADigit &&
+        (digit != lastDigit(encoding) || isVowel(previousLetter))) {
       encoding += digit;
     }
+  }
+
+  // string search functions return npos if nothing is found
+  // https://en.cppreference.com/w/cpp/string/basic_string/npos
+  bool isVowel(char letter) const {
+    return std::string("aieouy").find(tolower(letter)) != std::string::npos;
   }
 
   bool isComplete(const std::string &encoding) const {
